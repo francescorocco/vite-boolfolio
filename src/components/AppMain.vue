@@ -1,16 +1,25 @@
 <template>
     <div class="container">
-
+        <div class="row">
+            <MyCard :works="works"></MyCard>
+        </div>
     </div>
 </template>
 
 <script>
+import MyCard from './MyCard.vue';
 import axios from 'axios';
 
 export default{
         name:"AppMain",
+        components:{
+            MyCard
+        },
+
         data(){
             return{
+                works:[],
+                baseUrl: 'http://localhost:8000'
 
             }
         },
@@ -18,9 +27,9 @@ export default{
             getWorks(){
                 console.log('ciao');
 
-                axios.get("http://localhost:8000/api/works")
+                axios.get(`${this.baseUrl}/api/works`)
                 .then(response =>{
-                    console.log(response);
+                    this.works = response.data.results;
                 })
             }
         },
