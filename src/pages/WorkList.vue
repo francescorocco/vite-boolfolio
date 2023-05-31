@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import MyCard from './MyCard.vue';
+import MyCard from '../components/MyCard.vue';
 import axios from 'axios';
 
 export default{
-        name:"AppMain",
+        name:"WorkList",
         components:{
             MyCard
         },
@@ -25,7 +25,6 @@ export default{
         },
         methods:{
             getWorks(){
-                console.log('ciao');
 
                 axios.get(`${this.baseUrl}/api/works`)
                 .then(response =>{
